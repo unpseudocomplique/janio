@@ -1,0 +1,74 @@
+const httpStatus = require('http-status');
+const { {{majName}} } = require('../models');
+const ApiError = require('../utils/ApiError');
+
+/**
+ * Create a {{minName}}
+ * @param {Object} {{minName}}{{majName}}
+ * @returns {Promise<{{majName}}>}
+ */
+const create{{majName}} = async ({{minName}}{{majName}}) => {
+  return {{majName}}.create({{minName}}{{majName}});
+};
+
+/**
+ * Query for {{minName}}s
+ * @param {Object} filter - Mongo filter
+ * @param {Object} options - Query options
+ * @param {string} [options.sortBy] - Sort option in the format: sortField:(desc|asc)
+ * @param {number} [options.limit] - Maximum number of results per page (default = 10)
+ * @param {number} [options.page] - Current page (default = 1)
+ * @returns {Promise<QueryResult>}
+ */
+const query{{majName}}s = async (filter, options) => {
+  const {{minName}}s = await {{majName}}.paginate(filter, options);
+  return {{minName}}s;
+};
+
+/**
+ * Get {{minName}} by id
+ * @param {ObjectId} id
+ * @returns {Promise<{{majName}}>}
+ */
+const get{{majName}}ById = async (id) => {
+  return {{majName}}.findById(id);
+};
+
+/**
+ * Update {{minName}} by id
+ * @param {ObjectId} {{minName}}Id
+ * @param {Object} updateBody
+ * @returns {Promise<{{majName}}>}
+ */
+const update{{majName}}ById = async ({{minName}}Id, updateBody) => {
+  const {{minName}} = await get{{majName}}ById({{minName}}Id);
+  if (!{{minName}}) {
+    throw new ApiError(httpStatus.NOT_FOUND, '{{majName}} not found');
+  }
+
+  Object.assign({{minName}}, updateBody);
+  await {{minName}}.save();
+  return {{minName}};
+};
+
+/**
+ * Delete {{majName}} by id
+ * @param {ObjectId} {{minName}}Id
+ * @returns {Promise<{{majName}}>}
+ */
+const delete{{majName}}ById = async ({{minName}}Id) => {
+  const {{minName}} = await get{{majName}}ById({{minName}}Id);
+  if (!{{minName}}) {
+    throw new ApiError(httpStatus.NOT_FOUND, '{{majName}} not found');
+  }
+  await {{minName}}.remove();
+  return {{minName}};
+};
+
+module.exports = {
+  create{{majName}},
+  query{{majName}}s,
+  get{{majName}}ById,
+  update{{majName}}ById,
+  delete{{majName}}ById,
+};

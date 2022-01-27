@@ -1,0 +1,18 @@
+const express = require('express');
+const auth = require('../../middlewares/auth');
+const {{minName}}Controller = require('../../controllers/{{minName}}.controller');
+
+const router = express.Router();
+
+router
+  .route('/')
+  .post(auth('manage{{majName}}s'), {{minName}}Controller.create{{majName}})
+  .get(auth('get{{majName}}s'), {{minName}}Controller.get{{majName}}s);
+
+router
+  .route('/:{{minName}}Id')
+  .get(auth('get{{majName}}s'), {{minName}}Controller.get{{majName}})
+  .patch(auth('manage{{majName}}s'), {{minName}}Controller.update{{majName}})
+  .delete(auth('manage{{majName}}s'), {{minName}}Controller.delete{{majName}});
+
+module.exports = router;

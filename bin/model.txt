@@ -1,0 +1,18 @@
+const mongoose = require('mongoose');
+
+const {{majName}}Schema = mongoose.Schema(
+  {
+    isDeleted: {
+      type: Boolean,
+      default:false
+    },
+  }
+);
+
+
+/**
+ * @typedef {{majName}}
+ */
+const {{majName}} = mongoose.model('{{majName}}', {{majName}}Schema);
+
+module.exports = {{majName}};

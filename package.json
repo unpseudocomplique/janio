@@ -1,0 +1,22 @@
+{
+  "name": "janio",
+  "version": "1.0.0",
+  "description": "Generate express model, route & services",
+  "main": "./bin/index.js",
+  "bin": {
+    "janio": "./bin/index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Janio Mathieu",
+  "license": "ISC",
+  "dependencies": {
+    "boxen": "^6.2.1",
+    "chalk": "^5.0.0",
+    "handlebars": "^4.7.7",
+    "translate": "^1.4.1",
+    "yargs": "^17.3.1"
+  },
+  "type": "module"
+}

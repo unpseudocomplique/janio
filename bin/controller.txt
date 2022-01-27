@@ -1,0 +1,43 @@
+const httpStatus = require('http-status');
+const pick = require('../utils/pick');
+const ApiError = require('../utils/ApiError');
+const catchAsync = require('../utils/catchAsync');
+const { {{minName}}Service } = require('../services');
+
+const create{{majName}} = catchAsync(async(req, res) => {
+    const {{minName}} = await {{minName}}Service.create{{majName}}(req.body);
+    res.status(httpStatus.CREATED).send({{minName}});
+});
+
+const get{{majName}}s = catchAsync(async(req, res) => {
+    const filter = pick(req.query, ['name', 'role']);
+    const options = pick(req.query, ['sortBy', 'limit', 'page']);
+    const result = await {{minName}}Service.query{{majName}}s(filter, options);
+    res.send(result);
+});
+
+const get{{majName}} = catchAsync(async(req, res) => {
+    const {{minName}} = await {{minName}}Service.get{{majName}}ById(req.params.{{minName}}Id);
+    if (!{{minName}}) {
+        throw new ApiError(httpStatus.NOT_FOUND, '{{majName}} not found');
+    }
+    res.send({{minName}});
+});
+
+const update{{majName}} = catchAsync(async(req, res) => {
+    const {{minName}} = await {{minName}}Service.update{{majName}}ById(req.params.{{minName}}Id, req.body);
+    res.send({{minName}});
+});
+
+const delete{{majName}} = catchAsync(async(req, res) => {
+    await {{minName}}Service.delete{{majName}}ById(req.params.{{minName}}Id);
+    res.status(httpStatus.NO_CONTENT).send();
+});
+
+module.exports = {
+    create{{majName}},
+    get{{majName}}s,
+    get{{majName}},
+    update{{majName}},
+    delete{{majName}},
+};
